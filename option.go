@@ -18,9 +18,46 @@ type Options struct {
 	ExcludedExtensions   ExcludedExtensions
 	ExcludedPaths        ExcludedPaths
 	ExcludedPathesRegexs ExcludedPathesRegexs
+	IgnoreHTML           bool
+	IgnoreCSS            bool
+	IgnoreJS             bool
+	IgnoreJSON           bool
+	IgnoreSVG            bool
+	IgnoreXML            bool
 }
 
 type Option func(*Options)
+
+func IgnoreHTML() Option {
+	return func(o *Options) {
+		o.IgnoreHTML = true
+	}
+}
+func IgnoreCSS() Option {
+	return func(o *Options) {
+		o.IgnoreCSS = true
+	}
+}
+func IgnoreJS() Option {
+	return func(o *Options) {
+		o.IgnoreJS = true
+	}
+}
+func IgnoreJSON() Option {
+	return func(o *Options) {
+		o.IgnoreJSON = true
+	}
+}
+func IgnoreSVG() Option {
+	return func(o *Options) {
+		o.IgnoreSVG = true
+	}
+}
+func IgnoreXML() Option {
+	return func(o *Options) {
+		o.IgnoreXML = true
+	}
+}
 
 func WithExcludedExtensions(args []string) Option {
 	return func(o *Options) {

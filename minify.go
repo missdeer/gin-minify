@@ -1,7 +1,6 @@
 package minify
 
 import (
-	"log"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -21,7 +20,6 @@ func (g *minifyWriter) WriteString(s string) (int, error) {
 	ct := strings.Split(g.Header().Get("Content-Type"), ";")
 	b, e := g.m.Bytes(ct[0], []byte(s))
 	if e != nil || len(b) <= 0 {
-		log.Println(e, len(b), g.Header().Get("Content-Type"), s)
 		return g.ResponseWriter.Write([]byte(s))
 	}
 	return g.ResponseWriter.Write(b)

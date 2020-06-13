@@ -11,7 +11,7 @@ import 	"github.com/missdeer/gin-minify"
 func main() {
 	r := gin.Default()
 
-	r.Use(minify.Minify())
+	r.Use(minify.Minify(minify.IgnoreHTML())) // HTML can't work properly due to Transfer-Encoding: chunked
     ...
 }
 ```
